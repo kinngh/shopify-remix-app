@@ -1,4 +1,5 @@
 import { json } from "@remix-run/react";
+import { RequestedTokenType, Session } from "@shopify/shopify-api";
 import sessionHandler from "../sessionHandler.js";
 import shopify from "../shopify.js";
 import validateJWT from "../validateJWT.js";
@@ -10,8 +11,6 @@ import validateJWT from "../validateJWT.js";
  */
 const verifyRequest = async (request) => {
   try {
-    console.log(request.headers.get("authorization"));
-    return true;
     const authHeader = request.headers.get("authorization");
     if (!authHeader) {
       throw Error("No authorization header found");
@@ -22,17 +21,14 @@ const verifyRequest = async (request) => {
     if (!shop) {
       throw Error("No shop found, not a valid request");
     }
-    console.log(shop);
-    const sessionId = await shopify.session.getCurrentId({
-      isOnline: true,
-      rawRequest: request,
-    });
+    const sessionId = shopify.session.getJwtSessionId(shop, payload.sub);
     let session = "";
     if (!sessionId) {
       session = await getSession({ shop, authHeader });
+    } else {
+      session = await sessionHandler.loadSession(sessionId);
     }
 
-    session = session ? session : await sessionHandler.loadSession(sessionId);
     if (!session) {
       session = await getSession({ shop, authHeader });
     }
@@ -47,9 +43,7 @@ const verifyRequest = async (request) => {
 
     return { error: false };
   } catch (e) {
-    console.error(
-      `---> An error occured at verifyRequest middleware: ${e.message}`
-    );
+    error(`---> An error occured at verifyRequest middleware: ${e.message}`);
     throw json("", {
       status: 403,
     });

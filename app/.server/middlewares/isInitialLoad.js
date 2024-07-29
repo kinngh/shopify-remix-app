@@ -38,8 +38,6 @@ const isInitialLoad = async ({ request }) => {
     } else {
       // The user has visited the page again.
       // We know this because we're not preserving any url params and idToken doesn't exist here
-      
-      
       //console.log(request);
     }
   } catch (e) {

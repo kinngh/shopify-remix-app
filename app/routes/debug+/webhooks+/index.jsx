@@ -31,6 +31,12 @@ const DebugWebhooks = () => {
             nav("/debug");
           },
         }}
+        primaryAction={{
+          content: "test",
+          onAction: () => {
+            nav("/debug/webhooks/test");
+          },
+        }}
       >
         <Layout>
           <Layout.Section>
