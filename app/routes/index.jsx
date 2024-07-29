@@ -12,7 +12,12 @@ import {
 import { ExternalIcon } from "@shopify/polaris-icons";
 
 export const loader = async ({ request }) => {
-  const { session, shop } = await isInitialLoad({ request });
+  //Never remove this loader
+  //MARK:- Fix session/shop disappearing sometimes
+  //TODO
+  const interim = await isInitialLoad({ request });
+  const session = interim?.session;
+  const shop = interim?.shop;
   return json({ message: "ok" });
 };
 
@@ -88,7 +93,7 @@ const HomePage = () => {
                     icon={ExternalIcon}
                     onClick={() => {
                       open(
-                        "https://github.com/kinngh/shopify-nextjs-prisma-app/issues?q=is%3Aissue",
+                        "https://github.com/kinngh/shopify-remix-app/issues?q=is%3Aissue",
                         "_blank"
                       );
                     }}
@@ -101,7 +106,7 @@ const HomePage = () => {
                     icon={ExternalIcon}
                     onClick={() => {
                       open(
-                        "https://github.com/kinngh/shopify-nextjs-prisma-app",
+                        "https://github.com/kinngh/shopify-remix-app",
                         "_blank"
                       );
                     }}
@@ -129,7 +134,7 @@ const HomePage = () => {
                     icon={ExternalIcon}
                     onClick={() => {
                       open(
-                        "https://kinngh.gumroad.com/l/how-to-make-shopify-apps?utm_source=boilerplate&utm_medium=nextjs",
+                        "https://kinngh.gumroad.com/l/how-to-make-shopify-apps?utm_source=boilerplate&utm_medium=remix",
                         "_blank"
                       );
                     }}
