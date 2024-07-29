@@ -1,4 +1,4 @@
-import verifyRequest from "@/app/.server/middlewares/verifyRequest";
+import isInitialLoad from "@/app/.server/middlewares/isInitialLoad";
 import { json, useNavigate } from "@remix-run/react";
 import {
   BlockStack,
@@ -11,13 +11,8 @@ import {
 } from "@shopify/polaris";
 import { ExternalIcon } from "@shopify/polaris-icons";
 
-/**
- * @param {import("@remix-run/node").LoaderFunctionArgs} args - The loader function arguments.
- * @returns {Promise<Response>} A promise that resolves to a Response object.
- * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
- */
 export const loader = async ({ request }) => {
-  const check = await verifyRequest(request);
+  await isInitialLoad({ request });
   return json({ message: "ok" });
 };
 

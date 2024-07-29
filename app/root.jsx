@@ -22,7 +22,7 @@ export function Layout({ children }) {
       </head>
       <body>
         <script
-          src={`https://cdn.shopify.com/shopifycloud/app-bridge.js?apiKey=${global.SHOPIFY_API_KEY}`}
+          src={`https://cdn.shopify.com/shopifycloud/app-bridge.js?apiKey=${SHOPIFY_API_KEY}`}
         ></script>
         <NavMenu>
           <Link to="/debug" rel="debug">

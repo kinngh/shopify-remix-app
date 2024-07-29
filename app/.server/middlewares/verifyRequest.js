@@ -3,10 +3,16 @@ import sessionHandler from "../sessionHandler.js";
 import shopify from "../shopify.js";
 import validateJWT from "../validateJWT.js";
 
+/**
+ * @param {import("@remix-run/node").LoaderFunctionArgs} args - The loader function arguments.
+ * @returns {Promise<Response>} A promise that resolves to a Response object.
+ * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
+ */
 const verifyRequest = async (request) => {
   try {
+    console.log(request.headers.get("authorization"));
     return true;
-    const authHeader = request.headers["authorization"];
+    const authHeader = request.headers.get("authorization");
     if (!authHeader) {
       throw Error("No authorization header found");
     }
@@ -16,13 +22,17 @@ const verifyRequest = async (request) => {
     if (!shop) {
       throw Error("No shop found, not a valid request");
     }
-
+    console.log(shop);
     const sessionId = await shopify.session.getCurrentId({
       isOnline: true,
       rawRequest: request,
     });
+    let session = "";
+    if (!sessionId) {
+      session = await getSession({ shop, authHeader });
+    }
 
-    let session = await sessionHandler.loadSession(sessionId);
+    session = session ? session : await sessionHandler.loadSession(sessionId);
     if (!session) {
       session = await getSession({ shop, authHeader });
     }
@@ -40,9 +50,8 @@ const verifyRequest = async (request) => {
     console.error(
       `---> An error occured at verifyRequest middleware: ${e.message}`
     );
-    throw json(`${e.message}`, {
+    throw json("", {
       status: 403,
-      statusText: e.message,
     });
   }
 };

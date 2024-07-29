@@ -1,11 +1,11 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { installGlobals } from "@remix-run/node";
+import "dotenv/config";
 import { flatRoutes } from "remix-flat-routes";
 import { defineConfig } from "vite";
 import jsconfigPaths from "vite-jsconfig-paths";
 
 installGlobals();
-
 
 export default defineConfig({
   /**
@@ -13,7 +13,9 @@ export default defineConfig({
    * 2. Everything is parsed automatically with `JSON.stringify()`. If you stringify it again, it'll likely cause issues
    */
   define: {
-    global: { SHOPIFY_API_KEY: process.env.SHOPIFY_API_KEY },
+    SHOPIFY_API_KEY: JSON.stringify(
+      process.env.SHOPIFY_API_KEY || "cannot read process"
+    ),
   },
   server: {
     port: parseInt(process.env.PORT || 3000),
