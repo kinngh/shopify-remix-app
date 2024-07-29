@@ -1,0 +1,66 @@
+{
+  "name": "shopify-remix-app",
+  "version": "2024.07.29",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "author": {
+    "name": "Harshdeep Singh Hura",
+    "url": "https://harshdeephura.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kinngh/shopify-remix-app.git"
+  },
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "start": "remix-serve ./build/server/index.js",
+    "pretty": "prettier --write ./",
+    "update": "ncu -u",
+    "-----> Tunnel <-----": "",
+    "ngrok:auth": "ngrok authtoken <auth-token-goes-here>",
+    "ngrok": "ngrok http 3000",
+    "cloudflare": "cloudflared tunnel --url localhost:3000",
+    "-----> Shopify <-----": "",
+    "g:install": "npm i -g @shopify/app@latest @shopify/cli@latest",
+    "shopify": "shopify",
+    "update:config": "node _developer/tomlWriter.js && shopify app deploy; npm run pretty",
+    "update:url": "node _developer/updateDashboard.js",
+    "-----> Database <-----": "",
+    "pg:create": "mkdir database; pg_ctl -D database init",
+    "pg:start": "pg_ctl -D database start",
+    "pg:stop": "pg_ctl -D database stop",
+    "-----> Prisma <-----": "",
+    "prisma": "npx prisma",
+    "prisma:push": "npx prisma db push",
+    "prisma:pull": "npx prisma db pull",
+    "-----> Reserved Scripts <-----": "",
+    "prepare": "npx prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "5.17.0",
+    "@remix-run/node": "^2.10.3",
+    "@remix-run/react": "^2.10.3",
+    "@remix-run/serve": "^2.10.3",
+    "@shopify/app-bridge-react": "^4.1.3",
+    "@shopify/polaris": "^13.8.0",
+    "@shopify/shopify-api": "^11.2.0",
+    "cryptr": "^6.3.0",
+    "dotenv": "^16.4.5",
+    "isbot": "^5.1.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remix-flat-routes": "^0.6.5"
+  },
+  "devDependencies": {
+    "@iarna/toml": "^2.2.5",
+    "@remix-run/dev": "^2.10.3",
+    "ngrok": "^5.0.0-beta.2",
+    "npm-check-updates": "^16.14.20",
+    "prettier": "^3.3.3",
+    "prisma": "5.17.0",
+    "vite": "^5.3.5",
+    "vite-jsconfig-paths": "^2.0.1"
+  }
+}

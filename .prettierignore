@@ -1,0 +1,10 @@
+## Prettier will ignore following files and directories
+build/
+mysql/
+mongo/
+.cache/
+database/
+postgres/
+_developer/
+node_modules/
+package-lock.json
