@@ -1,4 +1,4 @@
-// import verifyRequest from "@/app/.server/middlewares/verifyRequest";
+import verifyRequest from "@/app/.server/middlewares/verifyRequest";
 import { useNavigate, json } from "@remix-run/react";
 import {
   BlockStack,
@@ -16,7 +16,7 @@ import {
  * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
  */
 export const loader = async ({ request }) => {
-  //   const check = await verifyRequest(request);
+  const { session, shop } = await verifyRequest(request);
   return json({ message: "ok" });
 };
 
@@ -29,12 +29,6 @@ const DebugWebhooks = () => {
         backAction={{
           onAction: () => {
             nav("/debug");
-          },
-        }}
-        primaryAction={{
-          content: "test",
-          onAction: () => {
-            nav("/debug/webhooks/test");
           },
         }}
       >

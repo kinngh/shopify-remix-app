@@ -3,6 +3,7 @@ import prisma from "../prisma";
 import sessionHandler from "../sessionHandler";
 import shopify from "../shopify";
 import freshInstall from "./freshInstall";
+import verifyRequest from "./verifyRequest";
 
 const isInitialLoad = async ({ request }) => {
   try {
@@ -36,9 +37,8 @@ const isInitialLoad = async ({ request }) => {
       }
       return { shop, session: onlineSession };
     } else {
-      // The user has visited the page again.
-      // We know this because we're not preserving any url params and idToken doesn't exist here
-      //console.log(request);
+      const { shop: requestShop, session } = await verifyRequest(request);
+      return { shop: requestShop, session };
     }
   } catch (e) {
     if (e.message.includes("timestamp check failed")) {

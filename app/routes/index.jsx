@@ -12,7 +12,7 @@ import {
 import { ExternalIcon } from "@shopify/polaris-icons";
 
 export const loader = async ({ request }) => {
-  await isInitialLoad({ request });
+  const { session, shop } = await isInitialLoad({ request });
   return json({ message: "ok" });
 };
 

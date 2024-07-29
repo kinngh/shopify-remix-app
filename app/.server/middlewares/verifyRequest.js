@@ -41,7 +41,7 @@ const verifyRequest = async (request) => {
       session = await getSession({ shop, authHeader });
     }
 
-    return { error: false };
+    return { session: session, shop: shop };
   } catch (e) {
     error(`---> An error occured at verifyRequest middleware: ${e.message}`);
     throw json("", {

@@ -2,7 +2,7 @@
 
 ## Dev only files and folders
 database/
-shopify.*.toml
+shopify.app.toml
 
 
 # dependencies
