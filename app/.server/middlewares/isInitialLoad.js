@@ -3,12 +3,13 @@ import prisma from "../prisma";
 import sessionHandler from "../sessionHandler";
 import shopify from "../shopify";
 import freshInstall from "./freshInstall";
-import verifyRequest from "./verifyRequest";
+// import verifyRequest from "./verifyRequest";
 
 const isInitialLoad = async ({ request }) => {
   try {
     const shop = new URL(request.url).searchParams.get("shop");
     const idToken = new URL(request.url).searchParams.get("id_token");
+    console.log(shop, idToken);
 
     if (idToken && shop) {
       const { session: offlineSession } = await shopify.auth.tokenExchange({
@@ -37,17 +38,13 @@ const isInitialLoad = async ({ request }) => {
       }
       return { shop, session: onlineSession };
     } else {
-      const { shop: requestShop, session } = await verifyRequest(request);
-      return { shop: requestShop, session };
+      //TODO
+      //MARK:- Temporarily disabled while I rerun the logic
+      // const { shop: requestShop, session } = await verifyRequest(request);
+      // return { shop: requestShop, session };
     }
   } catch (e) {
-    if (e.message.includes("timestamp check failed")) {
-      console.error(
-        "JWT Error - happens in dev mode and can be safely ignored."
-      );
-    } else {
-      console.error(`---> An error occured at isInitialLoad: ${e.message}`, e);
-    }
+    console.error(`---> An error occured at isInitialLoad: ${e.message}`, e);
   }
 };
 

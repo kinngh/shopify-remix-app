@@ -43,7 +43,9 @@ const verifyRequest = async (request) => {
 
     return { session: session, shop: shop };
   } catch (e) {
-    error(`---> An error occured at verifyRequest middleware: ${e.message}`);
+    console.error(
+      `---> An error occured at verifyRequest middleware: ${e.message}`
+    );
     throw json("", {
       status: 403,
     });
