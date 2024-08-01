@@ -1,6 +1,6 @@
 {
   "name": "shopify-remix-app",
-  "version": "2024.07.29",
+  "version": "2024.08.01",
   "private": true,
   "sideEffects": false,
   "type": "module",

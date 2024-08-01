@@ -8,10 +8,6 @@ import jsconfigPaths from "vite-jsconfig-paths";
 installGlobals();
 
 export default defineConfig({
-  /**
-   * 1. define doesn't work without global
-   * 2. Everything is parsed automatically with `JSON.stringify()`. If you stringify it again, it'll likely cause issues
-   */
   define: {
     SHOPIFY_API_KEY: JSON.stringify(
       process.env.SHOPIFY_API_KEY || "cannot read process"
