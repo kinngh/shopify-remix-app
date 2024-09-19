@@ -52,7 +52,7 @@ try {
     process.env.APP_PROXY_SUBPATH?.length > 0
   ) {
     config.app_proxy = {};
-    config.app_proxy.url = `${appUrl}/api/proxy_route`;
+    config.app_proxy.url = `${appUrl}/proxy`;
     config.app_proxy.prefix = process.env.APP_PROXY_PREFIX;
     config.app_proxy.subpath = process.env.APP_PROXY_SUBPATH;
   }

@@ -1,4 +1,4 @@
-import verifyRequest from "@/app/.server/middlewares/verifyRequest";
+import verifyProxy from "@/app/.server/middlewares/verifyProxy";
 import { json } from "@remix-run/react";
 
 /**
@@ -7,6 +7,6 @@ import { json } from "@remix-run/react";
  * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
  */
 export const loader = async ({ request }) => {
-  const { session, shop } = await verifyRequest(request);
+  const { shop } = await verifyProxy(request);
   return json({ message: "ok" });
 };

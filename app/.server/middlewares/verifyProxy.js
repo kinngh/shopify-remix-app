@@ -1,9 +1,12 @@
+import { json } from "@remix-run/react";
 import crypto from "crypto";
 
 const verifyProxy = async (request) => {
-  const { signature } = request.query;
+  const { searchParams } = new URL(request.url);
+  const signature = searchParams.get("signature");
+  const shop = searchParams.get("shop");
 
-  const queryURI = encodeQueryData(request.query)
+  const queryURI = encodeQueryData(Object.fromEntries(searchParams))
     .replace("/?", "")
     .replace(/&signature=[^&]*/, "")
     .split("&")
@@ -17,7 +20,7 @@ const verifyProxy = async (request) => {
     .digest("hex");
 
   if (calculatedSignature === signature) {
-    // request.user_shop = request.query.shop; //myshopify domain
+    return { shop: shop || "" };
   } else {
     throw json(
       {
