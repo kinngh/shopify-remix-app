@@ -12,12 +12,8 @@ import {
 import { ExternalIcon } from "@shopify/polaris-icons";
 
 export const loader = async ({ request }) => {
-  //Never remove this loader
-  //MARK:- Fix session/shop disappearing sometimes
-  //TODO
-  const interim = await isInitialLoad({ request });
-  const session = interim?.session;
-  const shop = interim?.shop;
+  //DO NOT REMOVE
+  const { session, shop } = await isInitialLoad({ request });
   return json({ message: "ok" });
 };
 
