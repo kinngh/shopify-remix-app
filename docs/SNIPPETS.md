@@ -6,12 +6,14 @@ I selected these snippets from my regular use and code that I was writing over a
 
 ## Snippets
 
-| Snippet                  | Description                                     |
-| ------------------------ | ----------------------------------------------- |
-| `sfc`                    | Create an arrow function component              |
-| `createNewPage`          | Create a new Polaris page with a Card           |
-| `createapi`              | Create a new endpoint for `/api`                |
-| `createproxy`            | Create a new endpoint for `/api/proxy_route`    |
-| `createwebhook`          | Create a new webhook function                   |
-| `createOnlineClientGql`  | Create a new GraphQL Client with online tokens  |
-| `createOfflineClientGql` | Create a new GraphQL Client with offline tokens |
+| Snippet                  | Description                                       |
+| ------------------------ | ------------------------------------------------- |
+| `sfc`                    | Create an arrow function component                |
+| `createNewPage`          | Create a new Polaris page with a Card             |
+| `createapi`              | Create a new endpoint for `/api`                  |
+| `createproxy`            | Create a new endpoint for `/api/proxy_route`      |
+| `createwebhook`          | Create a new webhook function                     |
+| `createOnlineClientGql`  | Create a new GraphQL Client with online tokens    |
+| `createOfflineClientGql` | Create a new GraphQL Client with offline tokens   |
+| `createget`              | Create a new `fetch()` with `GET` request method  |
+| `createpost`             | Create a new `fetch()` with `POST` request method |

@@ -1,16 +1,4 @@
-## FOR THE LOVE OF GOD DO NOT USE THIS IN PRODUCTION
-
-## THIS IS NOT EVEN REMOTELY READY
-
-## I AM MAKING IT PUBLIC SO PROGRESS CAN BE TRACKED
-
-## DO NOT USE IN PRODUCTION
-
-## PLEASE
-
----
-
-# Shopify Remix x Prisma Boilerplate
+# WIP | Shopify Remix x Prisma Boilerplate
 
 An embedded app starter template to get up and ready with Shopify app development with Remix and Prisma.
 
