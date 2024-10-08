@@ -1,6 +1,6 @@
-# WIP | Shopify Remix x Prisma Boilerplate
+# WIP | Shopify Remix / React Router DOM x Prisma Boilerplate
 
-An embedded app starter template to get up and ready with Shopify app development with Remix and Prisma.
+An embedded app starter template to get up and ready with Shopify app development with Remix / React Router DOM and Prisma.
 
 I've included [notes](/docs/NOTES.md) on this repo which goes over the repo on why certain choices were made.
 
