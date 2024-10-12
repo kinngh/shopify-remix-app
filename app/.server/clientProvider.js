@@ -13,15 +13,6 @@ const offline = {
     const client = new shopify.clients.Graphql({ session });
     return { client, shop, session };
   },
-
-  restClient: async ({ shop }) => {
-    const session = await fetchOfflineSession(shop);
-    const client = new shopify.clients.Rest({
-      session,
-      apiVersion: process.env.SHOPIFY_API_VERSION,
-    });
-    return { client, shop, session };
-  },
 };
 
 const fetchOnlineSession = async ({ request }) => {
@@ -38,15 +29,6 @@ const online = {
     const session = await fetchOnlineSession({ request });
     const client = new shopify.clients.Graphql({ session });
     const { shop } = session;
-    return { client, shop, session };
-  },
-  restClient: async ({ request }) => {
-    const session = await fetchOnlineSession({ request });
-    const { shop } = session;
-    const client = new shopify.clients.Rest({
-      session,
-      apiVersion: process.env.SHOPIFY_API_VERSION,
-    });
     return { client, shop, session };
   },
 };
