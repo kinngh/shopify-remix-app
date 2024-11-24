@@ -5,7 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from "react-router";
 import { NavMenu } from "@shopify/app-bridge-react";
 import { AppProvider as PolarisProvider } from "@shopify/polaris";
 import polarisCSS from "@shopify/polaris/build/esm/styles.css?url";
@@ -29,6 +29,7 @@ export function Layout({ children }) {
     return (
       <html lang="en">
         <head>
+          <title></title>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <Meta />

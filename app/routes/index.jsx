@@ -1,5 +1,5 @@
 import isInitialLoad from "@/app/.server/middlewares/isInitialLoad";
-import { json, useNavigate } from "@remix-run/react";
+import { json, useNavigate } from "react-router";
 import {
   BlockStack,
   Button,

@@ -1,5 +1,5 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import { installGlobals } from "@remix-run/node";
+import { reactRouter } from "@react-router/dev/vite";
+import { installGlobals } from "react-router";
 import "dotenv/config";
 import { flatRoutes } from "remix-flat-routes";
 import { defineConfig } from "vite";
@@ -20,7 +20,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    remix({
+    reactRouter({
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,

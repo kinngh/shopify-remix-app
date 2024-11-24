@@ -1,11 +1,11 @@
-import { json } from "@remix-run/react";
+import { json } from "react-router";
 import { RequestedTokenType, Session } from "@shopify/shopify-api";
 import sessionHandler from "../sessionHandler.js";
 import shopify from "../shopify.js";
 import validateJWT from "../validateJWT.js";
 
 /**
- * @param {import("@remix-run/node").LoaderFunctionArgs} args - The loader function arguments.
+ * @param {import("react-router").LoaderFunctionArgs} args - The loader function arguments.
  * @returns {Promise<Response>} A promise that resolves to a Response object.
  * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
  */

@@ -1,5 +1,5 @@
-import { createReadableStreamFromReadable } from "@remix-run/node";
-import { RemixServer } from "@remix-run/react";
+import { createReadableStreamFromReadable } from "react-router";
+import { ServerRouter } from "react-router";
 import { isbot } from "isbot";
 import { PassThrough } from "node:stream";
 import { renderToPipeableStream } from "react-dom/server";
@@ -36,7 +36,7 @@ function handleBotRequest(
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
-      <RemixServer
+      <ServerRouter
         context={remixContext}
         url={request.url}
         abortDelay={ABORT_DELAY}
@@ -84,7 +84,7 @@ function handleBrowserRequest(
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
       <>
-        <RemixServer
+        <ServerRouter
           context={remixContext}
           url={request.url}
           abortDelay={ABORT_DELAY}

@@ -1,5 +1,5 @@
 import verifyRequest from "@/app/.server/middlewares/verifyRequest";
-import { json, useNavigate } from "@remix-run/react";
+import { json, useNavigate } from "react-router";
 import {
   Button,
   Card,
@@ -11,7 +11,7 @@ import {
 } from "@shopify/polaris";
 
 /**
- * @param {import("@remix-run/node").LoaderFunctionArgs} args - The loader function arguments.
+ * @param {import("react-router").LoaderFunctionArgs} args - The loader function arguments.
  * @returns {Promise<Response>} A promise that resolves to a Response object.
  * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
  */

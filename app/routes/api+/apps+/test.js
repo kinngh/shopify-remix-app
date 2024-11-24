@@ -6,10 +6,10 @@
  */
 
 import verifyRequest from "@/app/.server/middlewares/verifyRequest";
-import { json } from "@remix-run/react";
+import { json } from "react-router";
 
 /**
- * @param {import("@remix-run/node").LoaderFunctionArgs} args - The loader function arguments.
+ * @param {import("react-router").LoaderFunctionArgs} args - The loader function arguments.
  * @returns {Promise<Response>} A promise that resolves to a Response object.
  * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
  */
@@ -19,7 +19,7 @@ export const loader = async ({ request }) => {
 };
 
 /**
- * @type {import('@remix-run/node').ActionFunction} args - The action function arguments.
+ * @type {import('react-router').ActionFunction} args - The action function arguments.
  * @returns {Promise<Response>} A promise that resolves to a Response object.
  * @throws {Response} Throws a Response for unhandled webhook topics or when processing is complete.
  */
