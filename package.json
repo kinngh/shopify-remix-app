@@ -1,0 +1,66 @@
+{
+  "name": "shopify-remix-app",
+  "version": "2025.0.0",
+  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Harshdeep Singh Hura",
+    "url": "https://harshdeephura.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kinngh/shopify-remix-app.git"
+  },
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "pretty": "prettier --write ./",
+    "update": "ncu -u",
+    "-----> Tunnel <-----": "",
+    "ngrok:auth": "ngrok authtoken <auth-token-goes-here>",
+    "ngrok": "ngrok http 5173",
+    "cloudflare": "cloudflared tunnel --url localhost:5173",
+    "-----> Shopify <-----": "",
+    "g:install": "npm i -g @shopify/cli@latest",
+    "shopify": "shopify",
+    "update:config": "node _developer/tomlWriter.js && shopify app deploy; npm run pretty",
+    "update:url": "node _developer/updateDashboard.js",
+    "-----> Database <-----": "",
+    "pg:create": "mkdir database; pg_ctl -D database init",
+    "pg:start": "pg_ctl -D database start",
+    "pg:stop": "pg_ctl -D database stop",
+    "db:create": "mkdir database; mysqld --initialize-insecure --datadir=./database",
+    "db:start": "mysqld --datadir=./database",
+    "db:stop": "mysqladmin shutdown",
+    "-----> Prisma <-----": "",
+    "prisma": "npx prisma",
+    "prisma:push": "npx prisma db push",
+    "prisma:pull": "npx prisma db pull",
+    "-----> Reserved Scripts <-----": "",
+    "prepare": "npx prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "@react-router/fs-routes": "^7.1.3",
+    "@react-router/node": "^7.1.3",
+    "@react-router/serve": "^7.1.3",
+    "@shopify/app-bridge-react": "^4.1.6",
+    "@shopify/polaris": "^13.9.2",
+    "@shopify/shopify-api": "^11.8.0",
+    "cryptr": "^6.3.0",
+    "dotenv": "^16.4.7",
+    "isbot": "^5.1.21",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router": "^7.1.3",
+    "vite-jsconfig-paths": "^2.0.1"
+  },
+  "devDependencies": {
+    "@iarna/toml": "^2.2.5",
+    "@react-router/dev": "^7.1.3",
+    "prettier": "^3.4.2",
+    "prisma": "^6.2.1",
+    "vite": "^6.0.11"
+  }
+}
